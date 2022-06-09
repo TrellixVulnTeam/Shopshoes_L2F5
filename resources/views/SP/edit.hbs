@@ -1,0 +1,173 @@
+ <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Checkout</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="single-product.html">Checkout</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout_area section_gap">
+        <div class="container">
+            <div class="billing_details">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h3>Edit product information </h3>
+                        <form class="row contact_form"  method="POST"   action="/ctsp/{{tShoes._id}}?_methor=PUT" novalidate="novalidate">
+                            <div class="col-md-6 form-group p_star">
+                                 <label for="">Name product</label>
+                                <input type="text" class="form-control" value="{{tShoes.TenSP}}" id="TenSP" name="TenSP">
+                                
+                                {{!-- <span class="placeholder" data-placeholder="Name product"></span> --}}
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                 <label for="">Cost:</label>
+                                <input type="number" class="form-control" value="{{tShoes.Gia}}" id="Gia" name="Gia">
+                                {{!-- <span class="placeholder" data-placeholder="Cost"></span> --}}
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <textarea class="form-control" name="GioiThieu" id="GioiThieu" rows="1" placeholder="Gioi thieu San pham">{{tShoes.GioiThieu}}</textarea>
+                            </div>
+
+                            <div class="col-md-6 form-group p_star">
+                                <label for="">Mau:</label>
+                                <select class="country_select" name="TenMau">
+                                     {{#each tMau}}
+                                    <option value="{{this.TenMau}}">{{this.TenMau}}</option>
+                                      {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <label for="">Chat lieu:</label>
+                                <select class="country_select"  name="ChatLieu">
+                                    {{#each tChatLieu}}
+                                    <option value="{{this.ChatLieu}}">{{this.ChatLieu}}</option>
+                                      {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <label for="">Nha San xuat:</label>
+                                <select class="country_select"  name="NSX">
+                                      {{#each tNSX}}
+                                    <option value="{{this.TenNSX}}">{{this.TenNSX}}</option>
+                                      {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <label for="">San pham loai:</label>
+                                <select class="country_select"  name="TenLoai">
+                                      {{#each tLoaiSP}}
+                                    <option value="{{this.TenLoai}}">{{this.TenLoai}}</option>
+                                      {{/each}}
+                                </select>
+                            </div>
+                            <h6 style="margin-left: 1rem;">So luong theo size </h6>
+                            <div>
+                               
+                                <div class="col-md-3 form-group p_star">
+                                     <p style="margin-bottom: 0;">size 36 </p>
+                                    <input type="number" class="form-control" id="size36" value="{{tShoes.Size.S01}}" name="Size.S01" >
+                                    {{!-- <span class="placeholder" data-placeholder="Size 36"></span> --}}
+                                </div>
+                                <div class="col-md-3 form-group p_star">
+                                     <p style="margin-bottom: 0;">size 36.5 </p>
+                                    <input type="number" class="form-control" id="size365" value="{{tShoes.Size.S02}}" name="Size.S02" >
+                                   
+                                </div>
+                                <div class="col-md-3 form-group p_star">
+                                     <p style="margin-bottom: 0;">size 37.5 </p>
+                                    <input type="number" class="form-control" id="size375" value="{{tShoes.Size.S03}}" name="Size.S03"  >
+                                 
+                                </div>
+                                <div class="col-md-3 form-group p_star">
+                                     <p style="margin-bottom: 0;">size 38 </p>
+                                    <input type="number" class="form-control" id="size38" value="{{tShoes.Size.S04}}" name="Size.S04"  >
+                                  
+                                </div>
+                                <div class="col-md-3 form-group p_star">
+                                     <p style="margin-bottom: 0;">size 38.5 </p>
+                                    <input type="number" class="form-control" id="size385" value="{{tShoes.Size.S05}}" name="Size.S05"  >
+                                  
+                                </div>
+                                <div class="col-md-3 form-group p_star">
+                                     <p style="margin-bottom: 0;">size 39 </p>
+                                    <input type="number" class="form-control" id="size39" value="{{tShoes.Size.S06}}" name="Size.S06"  >
+                                   
+                                </div>
+                                <div class="col-md-3 form-group p_star">
+                                     <p style="margin-bottom: 0;">size 40 </p>
+                                    <input type="number" class="form-control" id="size40" value="{{tShoes.Size.S07}}" name="Size.S07"  >
+                                  
+                                </div>
+                                <div class="col-md-3 form-group p_star">
+                                     <p style="margin-bottom: 0;">size 40.5 </p>
+                                    <input type="number" class="form-control" id="size405" value="{{tShoes.Size.S08}}" name="Size.S08"  >
+                                    
+                                </div>
+                                <div class="col-md-3 form-group p_star">
+                                     <p style="margin-bottom: 0;">size 41 </p>
+                                    <input type="number" class="form-control" id="size41" value="{{tShoes.Size.S09}}" name="Size.S09"  >
+                                    
+                                </div>
+                                <div class="col-md-3 form-group p_star">
+                                     <p style="margin-bottom: 0;">size 42 </p>
+                                    <input type="number" class="form-control" id="size42" value="{{tShoes.Size.S10}}" name="Size.S10"  >
+                                   
+                                </div>
+                                <div class="col-md-3 form-group p_star">
+                                     <p style="margin-bottom: 0;">size 42.5 </p>
+                                    <input type="number" class="form-control" id="size425" value="{{tShoes.Size.S11}}" name="Size.S11"  >
+                                   
+                                </div>
+                                <div class="col-md-3 form-group p_star">
+                                     <p style="margin-bottom: 0;">size 43 </p>
+                                    <input type="number" class="form-control" id="size43" value="{{tShoes.Size.S12}}" name="Size.S12" >
+                                </div>
+                           
+                            </div>
+                           <div class="col-md-8">
+                            <h6 >Chon anh san pham:</h6>
+                            </div>
+                            <div class="col-md-8">
+                                <span>Anh 1:</span>
+                                <input type="text" class="form-control" id="file" value="{{tShoes.Anh.Anh1}}" name="Anh.Anh1" >
+                                  
+                            </div>
+                             <div class="col-md-8">
+                                 <span>Anh 2:</span>
+                                <input type="text" class="form-control" id="file" value="{{tShoes.Anh.Anh2}}" name="Anh.Anh2" >
+                                  
+                            </div>
+                            <div class="col-md-8">
+                                  <span>Anh 3:</span>
+                                <input type="text" class="form-control" id="file" value="{{tShoes.Anh.Anh3}}" name="Anh.Anh3">
+                                  
+                            </div>
+
+                          
+                            <div class="col-md-12 form-group" style="margin-top: 1rem;">
+                                <button type="submit"  class="primary-btn" >Save a product</button>
+                                    {{!-- <input type="submit" name="submit" value="Đăng Nhập" /> --}}
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="order_box">
+                            <h2>Update a product</h2>
+                            <img src="/img/product/{{tShoes.Anh.Anh3}}" alt="" style="max-width: 100%;">
+                        </div>
+                         <div class="col-md-12" form-group>
+                                <label for="size">Soluong san pham chung(neu co):</label>
+                                <input type="number" class="form-control" id="size" name='size' value=0 >
+                                <button type="buttom" value="submit" class="primary-btn" style="display:inline-block;margin: 10px ;" onclick="copy()" >Nhap tat ca</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

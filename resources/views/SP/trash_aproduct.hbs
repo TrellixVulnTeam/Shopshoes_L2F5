@@ -1,0 +1,120 @@
+<section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Order Tracking</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="category.html">Fashon Category</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="tracking_box_area section_gap">
+    <div class="container">
+       <div>
+           
+           <a href="/ctsp/store/aproduct">Danh sach san pham</a>
+           <h3>San pham da xoa</h3>
+       </div>
+        <table class="table">
+        <thead>
+            <th scope="col">Ten SP</th>
+            <th scope="col">Gioi thieu</th>
+            <th scope="col">Gia</th>
+            <th scope="col">Mau</th>
+            <th scope="col">Loai SP</th>
+            <th scope="col" colspan="2">Chat lieu</th>
+           
+        </thead>
+        <tbody>
+            {{#each tShoes}}
+            <tr class="click-me">
+                {{!-- <th scope="row">{{sum @index 1}}</th> --}}
+                <td >{{this.TenSP}} </td>
+                <td class="shortens">{{this.GioiThieu}}</td>
+                <td>{{this.Gia}}</td>
+                <td>{{this.TenMau}}</td>
+                <td>{{this.TenLoai}}</td>
+                <td>{{this.ChatLieu}}</td>
+                <td>
+                    <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">restore</a>
+                    <a href="/ctsp/{{this._id}}/delete" class="btn btn-link" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-shoes-modal">Delete</a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="7" class="text-center">Khong co san pham nao bi xoa!
+                  
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+        </table>
+    </div>
+    <style>
+        .click-me{
+            transition: 0.25s;
+        }
+        .click-me:hover{
+            background-color: aqua;
+        }
+    </style>
+
+</section>
+<div class="modal fade" id="delete-shoes-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xoa san pham?</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <p id="messengerDelete">Ban muon xoa san pham nay khong?</p> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Huy</button>
+        <button id="btn-delete-shoes" type="button" class="btn btn-danger">Xoa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <form method="POST" name="delete-shoes-form"   >
+    </form>
+     <form method="POST" name="restore-shoes-form"   >
+    </form>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+         var shoesID;
+          var restoreBtn =$('.btn-restore')
+        //var shoesName ;
+        var deleteForm = document.forms['delete-shoes-form'];
+         var restoreForm = document.forms['restore-shoes-form'];
+       var btnDeleteShoes = document.getElementById('btn-delete-shoes')
+         $('#delete-shoes-modal').on('show.bs.modal', function(event){
+        var buttom =$(event.relatedTarget)
+         shoesID = buttom.data('id')
+     
+        //var shoesName = buttom.data('TenSP')
+    });
+     btnDeleteShoes.onclick =function(){
+         deleteForm.action = '/ctsp/' +shoesID+ '/force?_methor=DELETE';
+        deleteForm.submit();
+      // alert(shoesID)
+    }
+    restoreBtn.click(function(e){
+        e.preventDefault()
+         var shoesID = $(this).data('id')
+          restoreForm.action = '/ctsp/' +shoesID+ '/restore?_methor=PATCH';
+         restoreForm.submit(); 
+      
+    })
+    });
+     // document.getElementById("messengerDelete").innerHTML="Ban co muon xoa "; 
+   
+</script>

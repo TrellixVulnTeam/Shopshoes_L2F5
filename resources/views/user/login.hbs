@@ -1,0 +1,102 @@
+
+
+<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Login/Register</h1>
+					<nav class="d-flex align-items-center">
+						<a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="/user/logins">Login</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================Login Box Area =================-->
+	<section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<img class="img-fluid" src="/img/product/nen.webp" alt="">
+						<div class="hover">
+							 <h4>find your outdoor adventure</h4>
+                            <p>Get hooked on the feeling of summer. Whether you’re in search of thrills, relaxation, or discovery, our latest collection is ready to adapt. It’s time to get outside and find your adventure.</p>
+							<a class="primary-btn" href="/user/register">Create an Account</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner">
+						<h3>Log in to enter</h3>
+
+						<div class="col-md-12 form-group">
+							<p style="color: red; font-size:1.8rem;">{{data.message}}</p>
+						</div>
+						{{!-- <form class="row login_form"  id="contactForm" novalidate="novalidate"> --}}
+							<div class="row login_form">
+							<div class="col-md-12 form-group">
+								<input type="email" class="form-control" id="email" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="Password" class="form-control" id="password"  placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+							</div>
+							<div class="col-md-12 form-group">
+								<div class="creat_account">
+									<input type="checkbox" id="f-option2" name="selector">
+									<label for="f-option2">Keep me logged in</label>
+								</div>
+							</div>
+							<div class="col-md-12 form-group">
+								<button onclick="login()" class="primary-btn">Log In</button>
+								<a href="#">Forgot Password?</a>
+							</div>
+						</div>
+						{{!-- </form> --}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Login Box Area =================-->
+
+	<script>
+
+		function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+
+
+function login(){
+			$.ajax({
+				url:'/user/login',
+				type:'POST',
+				data:{
+					Email: $('#email').val(),
+					Password: $('#password').val(),
+				}
+			}).then(data=>{
+					setCookie('token',data.token,1)
+				 {{!-- console.log(" thong bao",data.message) --}}
+			
+				if(data.redirect){
+					 window.location.href= data.redirect
+					 alert(data.message)
+					  $('#nameemail').val()=data.email
+					 {{!-- console.log(data.redirect) --}}
+				}
+				
+				
+			}).catch(err=>{
+				console.log(err);
+			})
+		}
+	</script>
